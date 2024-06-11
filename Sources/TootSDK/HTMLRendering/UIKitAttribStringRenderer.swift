@@ -4,8 +4,8 @@
 #if canImport(UIKit)
     import Foundation
     import UIKit
-    import WebURL
-    import WebURLFoundationExtras
+//    import WebURL
+//    import WebURLFoundationExtras
     import SwiftSoup
 
     public class UIKitAttribStringRenderer {
@@ -131,11 +131,7 @@
         private func attributedTextForHref(_ element: Element, attributed: inout NSMutableAttributedString) {
             guard let href = try? element.attr("href") else { return }
 
-            if let webURL = WebURL(href),
-                let url = URL(webURL)
-            {
-                attributed.addAttribute(.link, value: url, range: attributed.fullRange)
-            } else if let url = URL(string: href) {
+			if let url = URL(string: href) {
                 attributed.addAttribute(.link, value: url, range: attributed.fullRange)
             }
         }

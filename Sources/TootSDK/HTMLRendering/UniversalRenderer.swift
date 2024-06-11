@@ -3,8 +3,8 @@
 
 import Foundation
 import SwiftSoup
-import WebURL
-import WebURLFoundationExtras
+//import WebURL
+//import WebURLFoundationExtras
 
 /// A simple renderer to adapt HTML content including custom emojis or render them as plain text
 public class UniversalRenderer {

@@ -2,7 +2,7 @@
 // Copyright (c) 2022. All rights reserved.
 
 import Foundation
-import WebURL
+//import WebURL
 
 public struct Pagination {
     public var maxId: String?
@@ -54,12 +54,12 @@ extension Pagination {
                 return []
             }
 
-            guard let webURL = WebURL(validURL) else {
+			guard let urlComponents = URLComponents(string: validURL) else {
                 print("TootSDK: invalid pagination Link (query): '\(link)'")
                 return []
             }
 
-            return webURL.formParams.allKeyValuePairs.map({ URLQueryItem(name: $0.0, value: $0.1) })
+			return urlComponents.queryItems
         }).reduce([], +)
 
         minId = paginationQueryItems.first { $0.name == "min_id" }?.value
